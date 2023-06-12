@@ -1,9 +1,28 @@
-function largestElement(arr) {
-    let largest = arr[0];
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] > largest) {
-            largest = arr[i];
-        }
+class Stack {
+    constructor () {
+        this.items = [];    
     }
-    return largest;
+    push (item) {
+        this.items.push(item);
+    }
+    pop () {
+        if(this.items.length === 0) {
+            return null;
+        }
+        return this.items.pop();
+    }
+    isEmpty () {
+        return this.items.length === 0;
+    }
 }
+const stack = new Stack();
+
+stack.push(1);
+stack.push(2);
+stack.push(3);
+
+console.log(stack.pop()); // 3
+console.log(stack.pop()); // 2
+console.log(stack.pop()); // 1
+console.log(stack.isEmpty()); // true
+
