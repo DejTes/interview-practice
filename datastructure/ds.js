@@ -76,15 +76,60 @@ console.log(stack.pop()); // 1
 console.log(stack.isEmpty()); // true
 
 
+/*
+4. Find the first non-repeated character: Write a function that takes a string as input and returns the first non-repeated character in the string. For example, if the input is "aabbcddde", the output should be "c".
+*/
 
-
-
-
+function nonRepeatedChar(str){
+    const charCount = {};
+    for (let i = 0; i < str.length; i++) {
+        if (charCount.hasOwnProperty(str[i])) {
+            charCount[str[i]]++;
+        } else {
+            charCount[str[i]] = 1;
+        }
+    }
+    for (let i = 0; i < str.length; i++) {
+        if (charCount[str[i]] === 1) {
+            return str[i];
+        }
+    }
+    return null;
+}
+console.log(nonRepeatedChar('aabbcddde'));
 
 
 
 
 /*
-4. Find the first non-repeated character: Write a function that takes a string as input and returns the first non-repeated character in the string. For example, if the input is "aabbcddde", the output should be "c".
-
+4. Find the first non-repeated character: Write a function that takes a string as input and returns the all non-repeated character in the string. For example, if the input is "aabbcddde", the output should be "ce".
 */
+
+function getNonRepeatedChars(inputString) {
+    var charCount = {};
+    var nonRepeatedChars = [];
+  
+    // Count the occurrence of each character
+    for (var i = 0; i < inputString.length; i++) {
+      var char = inputString[i];
+      if (charCount[char]) {
+        charCount[char]++;
+      } else {
+        charCount[char] = 1;
+      }
+    }
+    // Collect non-repeated characters
+    for (var char in charCount) {
+      if (charCount[char] === 1) {
+        nonRepeatedChars.push(char);
+      }
+    }
+    // Return the non-repeated characters as a string
+    return nonRepeatedChars.join('');
+  }
+  
+  // Example
+  var input = "aabbcddde";
+  var result = getNonRepeatedChars(input);
+  console.log(result);  // Output: "c"
+  
